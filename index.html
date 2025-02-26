@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>小宝专属生日惊喜</title>
+    <style>
+        /* 粉色渐变背景（网页3/4优化） */
+        body {
+            background: linear-gradient(145deg, #ff9a9e, #fad0c4, #ffdde1);
+            min-height: 100vh;
+            font-family: 'Microsoft YaHei', cursive;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* 动态气泡特效（网页3/8增强版） */
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .bubbles li {
+            position: absolute;
+            list-style: none;
+            background: rgba(255,255,255,0.15);
+            animation: bubble 15s linear infinite;
+        }
+        @keyframes bubble {
+            0% { transform: translateY(0) scale(0); }
+            100% { transform: translateY(-1000px) scale(1); }
+        }
+
+        /* 主内容容器（网页12响应式优化） */
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 动态标题（网页11/12结合） */
+        h1 {
+            font-size: 2.8rem;
+            color: #ff1493;
+            text-shadow: 3px 3px 0px rgba(255,20,147,0.2);
+            margin: 30px 0;
+            animation: heartbeat 1.2s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* 交互式祝福面板（网页12创新设计） */
+        .love-box {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(255,105,180,0.2);
+            transition: transform 0.3s;
+        }
+        .love-box:hover {
+            transform: rotate(-2deg) scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态气泡 -->
+    <ul class="bubbles">
+        <li style="left:10%;animation-delay:2s"></li>
+        <li style="left:20%;animation-delay:6s"></li>
+        <li style="left:35%;animation-delay:4s"></li>
+        <li style="left:50%;animation-delay:8s"></li>
+        <li style="left:65%;animation-delay:3s"></li>
+        <li style="left:80%;animation-delay:5s"></li>
+    </ul>
+
+    <div class="container">
+        <h1>❤️ 生日快乐，我的宝贝！ ❤️</h1>
+        
+        <div class="love-box">
+            <img src="https://cdn.example.com/birthday-cake.gif" 
+                 alt="旋转蛋糕" 
+                 style="width:80%;max-width:300px;margin:15px auto">
+            
+            <!-- 时间轴回忆（网页7增强版） -->
+            <div class="memory-timeline">
+                <div class="memory-item">
+                    <img src="https://cdn.example.com/memory1.jpg" 
+                         class="memory-photo"
+                         onclick="showMessage('还记得我们第一次相遇的那天...')">
+                </div>
+                <!-- 可添加更多回忆照片 -->
+            </div>
+
+            <!-- 音频播放器（网页9/10优化） -->
+            <audio controls autoplay loop style="width:100%">
+                <source src="https://cdn.example.com/birthday-song.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- 动态祝福语（网页12交互设计） -->
+        <button class="love-btn" onclick="showRandomMessage()">
+            点击拆开惊喜礼物盒 🎁
+        </button>
+    </div>
+
+    <script>
+        // 动态气泡生成（网页3/8增强）
+        function createBubbles() {
+            const bubbleContainer = document.querySelector('.bubbles');
+            for(let i=0; i<15; i++){
+                const bubble = document.createElement('li');
+                bubble.style.left = Math.random()*100 + '%';
+                bubble.style.width = bubble.style.height = 
+                    (Math.random()*50 + 20) + 'px';
+                bubble.style.borderRadius = '50%';
+                bubbleContainer.appendChild(bubble);
+            }
+        }
+        createBubbles();
+
+        // 随机情话生成（网页12创新）
+        const messages = [
+            "感谢宝贝出现在我的生命中",
+            "希望每天都能和你贴贴，一起睡觉",
+            "我们的故事永远写不完...",
+            "你要是点三下能抽到这条那我可以请你吃烧烤✨"
+        ];
+        function showRandomMessage() {
+            Swal.fire({
+                title: messages[Math.floor(Math.random()*messages.length)],
+                icon: 'success',
+                background: '#fff0f5',
+                confirmButtonColor: '#ff69b4'
+            });
+        }
+    </script>
+    
+    <!-- 引入SweetAlert2交互库（网页12推荐） -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
